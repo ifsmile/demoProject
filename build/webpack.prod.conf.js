@@ -1,6 +1,5 @@
 'use strict'
 const path = require('path')
-const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('./config')
 const merge = require('webpack-merge')
@@ -12,17 +11,10 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const webpackConfig = merge(baseWebpackConfig, {
   devtool: '#source-map',
-  module: {
-    rules: utils.styleLoaders({
-      sourceMap: true,
-      extract: true,
-      usePostCSS: true
-    })
-  },
   output: {
     path: config.distDir,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    filename: 'js/[name].[chunkhash].js',
+    chunkFilename: 'js/[id].[chunkhash].js'
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -38,7 +30,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       parallel: true
     }),
     new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash].css'),
+      filename: 'css/[name].[contenthash].css',
       allChunks: true,
     }),
     new OptimizeCSSPlugin({

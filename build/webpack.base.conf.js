@@ -1,8 +1,7 @@
 'use strict'
 const path = require('path')
-const utils = require('./utils')
 const config = require('./config')
-const vueLoaderConfig = require('./vue-loader.conf')
+const styleLoaders = require('./styleLoaders')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -48,7 +47,7 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: vueLoaderConfig
+        options: styleLoaders
       },
       {
         test: /\.js$/,
@@ -56,19 +55,19 @@ module.exports = {
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
+        test: /\.css$/,
+        use: styleLoaders.css
+      },
+      {
+        test: /\.less$/,
+        use: styleLoaders.less
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
-        }
-      },
-      {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]')
+          name: 'img/[name].[hash:7].[ext]'
         }
       },
       {
@@ -76,7 +75,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+          name: 'fonts/[name].[hash:7].[ext]'
         }
       }
     ]
