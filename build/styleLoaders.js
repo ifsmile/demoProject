@@ -5,14 +5,14 @@ const isProd = process.env.NODE_ENV === 'production'
 const cssLoader = {
   loader: 'css-loader',
   options: {
-    sourceMap: isProd
+    sourceMap: !isProd
   }
 }
 
 const postcssLoader = {
   loader: 'postcss-loader',
   options: {
-    sourceMap: isProd
+    sourceMap: !isProd
   }
 }
 
@@ -24,7 +24,7 @@ function generateLoaders (loader, loaderOptions) {
     loaders.push({
       loader: loader + '-loader',
       options: Object.assign({}, loaderOptions, {
-        sourceMap: isProd
+        sourceMap: !isProd
       })
     })
   }

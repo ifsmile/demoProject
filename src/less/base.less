@@ -1,0 +1,93 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: @scrollbar-width;
+  height: @scrollbar-width;
+
+  &-track {
+    background-color: rgba(255, 255, 255, .6);
+  }
+  &-thumb {
+    background-color: rgba(0, 0, 0, .2);
+    // border: 2px solid rgba(255, 255, 255, .6);
+    // border-radius: 8px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, .4)
+    }
+    &:active {
+      background-color: rgba(0, 0, 0, .5)
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 2px!important;
+    height: 2px!important;
+  }
+}
+::selection {
+  color: @text-white-color;
+  background: @accent-color;
+}
+
+html {
+  font-size: 10px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @text-base-color;
+  background-color: @body-background;
+}
+
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+a {
+  color: @link-color;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: @link-hover-color;
+  }
+}
+
+ul.default,
+ol.default {
+  padding-left: 30px
+}
+
+ul.default {
+  list-style: disc
+}
+
+ol.default {
+  list-style: decimal
+}
+
+img {
+  width: 100%
+}

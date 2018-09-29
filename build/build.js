@@ -11,7 +11,7 @@ const config = require('./config')
 const spinner = ora('building for production...')
 
 spinner.start()
-rm(path.join(config.distDir, 'static'), err => {
+rm(config.distDir, err => {
   if (err) throw err
   webpack(webpackConfig, (err, stats) => {
     spinner.stop()
